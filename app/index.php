@@ -1,11 +1,11 @@
 <?php
-$site_data      = json_decode(file_get_contents('http://templates.jquery.link/api/' . $_SERVER['HTTP_HOST']), true);
+$site_data      = json_decode(file_get_contents('http://local.jquery.link/api/' . $_SERVER['HTTP_HOST']), true);
 
 $phone_name     = $site_data['phone_name'];
 $phone_href     = $site_data['phone_href'];
 
-$text           = str_replace('+', ' ', trim($_GET['t'] ?? 'Entrumpelung'));
-$city           = str_replace('+', ' ', trim($_GET['n'] ?? 'in der nahe'));
+$text           = str_replace('+', ' ', trim($_GET['t'] ?? 'Vízvezetékszerelő'));
+$city           = str_replace('+', ' ', trim($_GET['n'] ?? ''));
 
 $title = $text . ' ' . $city;
 ?>
@@ -37,7 +37,7 @@ $title = $text . ' ' . $city;
                             <div class="header__imgWrapper">
                                 <img class="header__img" src="./assets/img/mainFon.jpg" alt="mainFon">
                             </div>
-                            <h1 class="header__title">Vízvezetékszerelő ++</h1>
+                            <h1 class="header__title"><?= $title ?></h1>
                             <p class="header__txt"><strong>Vízvezeték-szerelés</strong>, javítás és beszerelés 0-24  órában, gyorsan és egyszerűen! <strong> Mindenféle  szanitáris probléma</strong>, beleértve a <strong>dugulásokat</strong>  és fűtési gondokat. Hívjon minket, és 30-40  percen belül a helyszínen vagyunk!
                             </p>
                         </div>
@@ -95,7 +95,7 @@ $title = $text . ' ' . $city;
                             <img class="antiClogging__img" src="./assets/img/fon4.png" alt="fon4">
                            </div>
                            <div class="antiClogging__content">
-                            <h2 class="antiClogging__title">Duguláselhárítás ++</h2>
+                            <h2 class="antiClogging__title">Duguláselhárítás <?= $city ?></h2>
                             <p class="antiClogging__txt">Professzionális <strong>duguláselhárító</strong>  szolgáltatásaink garantálják a lefolyók  zökkenőmentes működését. Hívjon minket  bizalommal, és mi gyorsan és hatékonyan  orvosoljuk a dugulásokat!</p>
                             <div class="antiClogging__btnWrp">
                                 <a class="antiClogging__btn" href="tel:111222333"><span>111222333</span></a>
@@ -140,7 +140,7 @@ $title = $text . ' ' . $city;
                                 <h2 class="troubleshootingHeatingProblems__title">Miért Válasszon Minket?</h2>
                                 <p class="troubleshootingHeatingProblems__txt">Szakértőink 24 órás szolgáltatással állnak  rendelkezésére, így bármikor kereshet minket.  Az összes szolgáltatásunk során lehetőséget  biztosítunk a helyszíni, kényelmes terminálos  fizetésre, így nem kell aggódnia a készpénz  miatt. Garantáljuk a gyors, hatékony és teljes  körű megoldásokat!</p>
                                 <div class="troubleshootingHeatingProblems__btnWrp">
-                                    <a class="troubleshootingHeatingProblems__btn" href="tel:111222333"><span>111222333</span></a>
+                                    <a class="troubleshootingHeatingProblems__btn" href="<?= $phone_href ?>"><span>111222333</span></a>
                                 </div>
                             </div>
                         </div>
@@ -184,37 +184,28 @@ $title = $text . ' ' . $city;
                   <div class='row'>
                      <div class='col-12 container'>
                         <div class='forms__box'>
-                           <h2 class='forms__title'>Kontaktieren Sie uns:</h2>
-                           <form id='jq_form' class='mb-0 mt-3'>
-                              <div class='my-0'>
-                                 <input class='form-control' placeholder='Name' name='jq_name' type='text'>
-                                 <div id='jq_name' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div class='my-4'>
-                                 <input class='form-control' placeholder='Telefonnummer' name='jq_phone' type='text'>
-                                 <div id='jq_phone' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div class='my-4'>
-                                 <input class='form-control' placeholder='Straße' name='jq_street' type='text'>
-                                 <div id='jq_street' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div class='my-4'>
-                                 <input class='form-control' placeholder='Postleitzahl/Stadt' name='jq_city' type='text'>
-                                 <div id='jq_city' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div class='my-4'>
-                                 <input class='form-control' placeholder='E-mail' name='jq_email' type='text'>
-                                 <div id='jq_email' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div class='my-4'>
-                                 <textarea rows='3' class='form-control' name='jq_text' placeholder='Beschreibung'></textarea>
-                                 <div id='jq_text' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
-                              </div>
-                              <div>
-                                 <input class='btn  text-uppercase fw-bold mb-0 px-3 py-2 forms__button' type='submit' id='jq_submit' value='Senden'>
-                              </div>
-                              <div id='jq_success' style='display:none'>Vielen Dank für Ihre Anfrage. Unsere Mitarbeiter werden sich in Kürze bei Ihnen melden.</div>
-                           </form>
+                        <h2 class='forms__title'>Kapcsolatfelvétel:</h2>
+                      <form id='jq_form' class='mb-0 mt-3'>
+                         <div class='my-0'>
+                            <input class='form-control' placeholder='Név' name='jq_name' type='text'>
+                            <div id='jq_name' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Ez egy kötelező mező.</div>
+                         </div>
+                         <div class='my-4'>
+                            <input class='form-control' placeholder='Telefonszám' name='jq_phone' type='text'>
+                            <div id='jq_phone' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Ez egy kötelező mező.</div>
+                         </div>
+                         <div class='my-4'>
+                            <input class='form-control' placeholder='Email cím' name='jq_email' type='text'>
+                         </div>
+                         <div class='my-4'>
+                            <textarea rows='3' class='form-control' name='jq_text' placeholder='Üzenet'></textarea>
+                            <div id='jq_text' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Ez egy kötelező mező.</div>
+                         </div>
+                         <div>
+                            <input class='btn  text-uppercase fw-bold mb-0 px-3 py-2 forms__button' type='submit' id='jq_submit' value='Küldés'>
+                         </div>
+                         <div id='jq_success' style='display:none'>Köszönöm az üzenetet. Elküldte.</div>
+                      </form>
                         </div>
                      </div>
                   </div>
@@ -228,7 +219,7 @@ $title = $text . ' ' . $city;
         </section>
         <section class='btnFixed'>
             <div class='btnFixed__box'>
-                <a class="btnFixed__btn" href="<?= $phone_href ?>" ><span>111222333</span></a>
+                <a class="btnFixed__btn" href="<?= $phone_href ?>" ><?= $phone_name ?></a>
             </div>
         </section>
     </main>
