@@ -1,0 +1,28 @@
+.troubleshootingHeatingProblems {
+    margin-top: 50px;
+}
+.troubleshootingHeatingProblems__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.troubleshootingHeatingProblems__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.troubleshootingHeatingProblems__title {
+    @include h2Title;
+    background-color: #fff;
+    color: var(--mainColor);
+    transform: translateY(0);
+}
+.troubleshootingHeatingProblems__txt {
+    line-height: 20px;
+}
+.troubleshootingHeatingProblems__btnWrp {
+    text-align: center;
+}
+.troubleshootingHeatingProblems__btn {
+    @include btn;
+}
