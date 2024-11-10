@@ -49,7 +49,7 @@ body{
 
 @mixin h1Title{
     font-weight: 700;
-    font-size: clamp(32px, 5vw, 40px);
+    font-size: clamp(32px, 4vw, 40px);
     margin: 0 auto;
     background-color: var(--mainColor);
     color: #fff;
@@ -59,7 +59,7 @@ body{
     max-width: 90%;
 }
 @mixin h2Title {
-    font-size: clamp(28px, 5vw, 32px);
+    font-size: clamp(26px, 4vw, 32px);
     font-weight: 600;
     margin: 0 auto;
     background-color: var(--mainColor);
